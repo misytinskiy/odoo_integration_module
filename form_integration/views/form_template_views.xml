@@ -1,0 +1,50 @@
+<odoo>
+    <record id="view_form_template_tree" model="ir.ui.view">
+        <field name="name">form.template.tree</field>
+        <field name="model">form.template</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="author"/>
+                <field name="number_of_answers"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_form_template_form" model="ir.ui.view">
+        <field name="name">form.template.form</field>
+        <field name="model">form.template</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_import_data" type="object" 
+string="Импортировать данные" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="author"/>
+                        <field name="api_token"/>
+                    </group>
+                    <group>
+                        <field name="number_of_answers"/>
+                        <field name="questions" widget="text"/>
+                        <field name="aggregated_results" widget="text"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_form_template" model="ir.actions.act_window">
+        <field name="name">Form Templates</field>
+        <field name="res_model">form.template</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_form_template_root" name="Form Integration" 
+sequence="10"/>
+    <menuitem id="menu_form_template" name="Form Templates" 
+parent="menu_form_template_root" action="action_form_template" 
+sequence="10"/>
+</odoo>
